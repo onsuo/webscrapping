@@ -1,0 +1,12 @@
+{
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=W0611", // unused-import
+        "--disable=C0103", // invalid-name
+        "--disable=C0111", // missing-docstring
+        "--disable=C0301", // line-too-long
+        "--disable=C0304", // missing-final-newline
+        "--disable=C0305" // trailing-newlines
+    ]
+}
