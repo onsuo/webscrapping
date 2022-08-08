@@ -18,12 +18,12 @@ browser = webdriver.Chrome("chromedriver", options=options)
 
 # 1. 네이버로 이동
 browser.get("https://naver.com")
-screenshot()
+# screenshot()
 
 # 2. 로그인 버튼 클릭
 elem = browser.find_element(By.CLASS_NAME, "link_login")
 elem.click()
-screenshot()
+# screenshot()
 
 # 3. id, pw 입력
 browser.find_element(By.ID, "id").send_keys("naver_id")
@@ -32,7 +32,7 @@ screenshot()
 
 # 4. 로그인 버튼 클릭
 browser.find_element(By.ID, "log.login").click()
-screenshot()
+# screenshot()
 
 time.sleep(3)
 
