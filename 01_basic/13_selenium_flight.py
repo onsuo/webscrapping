@@ -42,6 +42,6 @@ browser.find_elements(By.XPATH, "//b[text()='28']")[1].click()
 
 browser.find_element(By.XPATH, "//b[text()='도착']").click()
 browser.find_element(By.XPATH, "//*[contains(@placeholder, '국가')]").send_keys("제주")
-browser.find_element(By.XPATH, "//*[text()='제주국제공항']").click()
+browser.find_element(By.XPATH, "//*[text()='제주국제공항']").click() # 오류 있음
 
 browser.find_element(By.XPATH, "//*[text()='항공권 검색']").click()
