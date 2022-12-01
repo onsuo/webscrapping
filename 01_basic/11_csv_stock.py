@@ -1,4 +1,5 @@
 import csv
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -12,7 +13,9 @@ writer.writerow(title)
 
 for page in range(1, 5):
     url = f"https://finance.naver.com/sise/sise_market_sum.nhn?&page={page}"
-    headers = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15"}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15"
+    }
 
     res = requests.get(url, headers=headers)
     res.raise_for_status()
@@ -22,10 +25,10 @@ for page in range(1, 5):
 
     soup = BeautifulSoup(res.text, "lxml")
 
-    data_rows = soup.find("table", attrs={"class":"type_2"}).find("tbody").find_all("tr")
+    data_rows = soup.find("table", attrs={"class": "type_2"}).find("tbody").find_all("tr")
     for row in data_rows:
         columns = row.find_all("td")
-        if len(columns) < 2: # 의미 없는 데이터는 스킵
+        if len(columns) < 2:  # 의미 없는 데이터는 스킵
             continue
         data = [column.get_text().strip() for column in columns]
         # print(data)

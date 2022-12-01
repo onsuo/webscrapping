@@ -12,15 +12,17 @@ import re
 
 p = re.compile("ca.e")
 
+
 def print_match(_m):
     if _m:
-        print("m.string:", _m.string) # 입력받은 문자열 반환
-        print("m.group():", _m.group()) # 일치하는 문자열 반환
-        print("m.start():", _m.start()) # 일치하는 문자열의 시작 index
-        print("m.end():", _m.end()) # 일치하는 문자열의 끝 index
-        print("m.span():", _m.span()) # 일치하는 문자열의 시작 / 끝 index
+        print("m.string:", _m.string)  # 입력받은 문자열 반환
+        print("m.group():", _m.group())  # 일치하는 문자열 반환
+        print("m.start():", _m.start())  # 일치하는 문자열의 시작 index
+        print("m.end():", _m.end())  # 일치하는 문자열의 끝 index
+        print("m.span():", _m.span())  # 일치하는 문자열의 시작 / 끝 index
     else:
         print("매칭되지 않음")
+
 
 m = p.match("sccarefhcafei")
 print_match(m)
