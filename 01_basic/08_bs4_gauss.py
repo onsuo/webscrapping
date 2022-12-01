@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://comic.naver.com/webtoon/list.nhn?titleId=675554"
+url = "https://comic.naver.com/webtoon/list?titleId=799793"
 res = requests.get(url)
 res.raise_for_status()
 
 soup = BeautifulSoup(res.text, "lxml")
 
-cartoons1 = soup.find_all("td", attrs={"class":"title"})
+cartoons1 = soup.find_all("td", attrs={"class": "title"})
 title = cartoons1[0].a.get_text()
 link = cartoons1[0].a["href"]
 print(title)
@@ -21,7 +21,7 @@ for cartoon in cartoons1:
 
 # 평점 구하기
 total_rates = 0
-cartoons2 = soup.find_all("div", attrs={"class":"rating_type"})
+cartoons2 = soup.find_all("div", attrs={"class": "rating_type"})
 for cartoon in cartoons2:
     rate = cartoon.find("strong").get_text()
     print(rate)

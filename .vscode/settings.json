@@ -2,12 +2,14 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
-        "--disable=W0611", // unused-import
+        // "--disable=W0611", // unused-import
         "--disable=C0103", // invalid-name
         "--disable=C0111", // missing-docstring
         "--disable=C0301", // line-too-long
-        "--disable=C0304", // missing-final-newline
-        "--disable=C0305" // trailing-newlines
+        // "--disable=C0304", // missing-final-newline
+        // "--disable=C0305" // trailing-newlines
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true, // 저장할 때마다 black을 적용합니다.
 }
