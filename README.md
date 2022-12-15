@@ -9,5 +9,5 @@
 
 - requests
 - lxml
-- beautifulsoup4
 - selenium
+- beautifulsoup4
