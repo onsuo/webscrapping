@@ -92,3 +92,5 @@ for i, house in enumerate(houses):
     print(f"가격 : {price}")
     print(f"타입 : {size}")
     print(f"층 : {floor}")
+
+browser.quit()
