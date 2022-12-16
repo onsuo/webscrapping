@@ -48,9 +48,24 @@ Kim : 글쎄요, 저는 어쩌구 저쩌구
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
+
+def create_browser():
+    options = webdriver.ChromeOptions()
+    options.add_argument("window-size=1920x1080")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+    )
+    options.add_argument("lang=ko_KR")
+    # options.headless = True
+
+    _browser = webdriver.Chrome("chromedriver", options=options)
+    _browser.minimize_window()
+    # browser.implicitly_wait(3)
+
+    return _browser
 
 
 def scrape_weather():
@@ -71,7 +86,9 @@ def scrape_weather():
     rain_poss = (rain[1], rain[4])  # 00%
 
     browser.find_element(By.CLASS_NAME, "today_chart_list").find_element(By.XPATH, "//*[text()='미세먼지']").click()
-    # WebDriverWait(browser, 3).until(EC.presence_of_element_located((By.CLASS_NAME, "state_info._fine_dust._info_layer")))
+    WebDriverWait(browser, 3).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "state_info._fine_dust._info_layer"))
+    )
 
     fine_dust = browser.find_element(By.CLASS_NAME, "state_info._fine_dust._info_layer").text.split("\n")
     particulate1 = fine_dust[2].split(" ")
@@ -136,17 +153,7 @@ def scrape_english():
 
 
 if __name__ == "__main__":
-    options = webdriver.ChromeOptions()
-    options.add_argument("window-size=1920x1080")
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
-    )
-    options.add_argument("lang=ko_KR")
-    # options.headless = True
-
-    browser = webdriver.Chrome("chromedriver", options=options)
-    browser.minimize_window()
-    browser.implicitly_wait(3)
+    browser = create_browser()
 
     scrape_weather()
     scrape_main_news()
