@@ -8,6 +8,6 @@
 ### 사용된 package 목록
 
 - requests
-- lxml
 - selenium
 - beautifulsoup4
+- lxml

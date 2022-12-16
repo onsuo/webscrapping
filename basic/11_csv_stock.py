@@ -3,6 +3,7 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
+
 filename = "01_basic/시가총액1-200.csv"
 f = open(filename, "w", encoding="utf-8-sig", newline="")
 writer = csv.writer(f)
@@ -17,7 +18,7 @@ for page in range(1, 5):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15"
     }
 
-    res = requests.get(url, headers=headers)
+    res = requests.get(url, headers=headers, timeout=5)
     res.raise_for_status()
 
     # with open("01_basic/naverstock.html", "w", encoding="utf8") as f:

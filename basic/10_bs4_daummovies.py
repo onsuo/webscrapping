@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 # f = open("01_basic/movierank.txt", "w", encoding="utf8")
 
 for year in range(2015, 2022):
@@ -9,7 +10,7 @@ for year in range(2015, 2022):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15"
     }
 
-    res = requests.get(url, headers=headers)
+    res = requests.get(url, headers=headers, timeout=5)
     res.raise_for_status()
 
     # with open("01_basic/daummovie.html", "w", encoding="utf8") as f:
@@ -29,7 +30,7 @@ for year in range(2015, 2022):
         print(image_url)
         # f.write(image_url + "\n")
 
-        image_res = requests.get(url, headers=headers)
+        image_res = requests.get(url, headers=headers, timeout=5)
         image_res.raise_for_status()
 
         with open(f"01_basic/movie_{year}_{i + 1}.jpg", "wb") as f:

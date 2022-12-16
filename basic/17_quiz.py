@@ -43,6 +43,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
+
 options = webdriver.ChromeOptions()
 options.add_argument("window-size=1920x1080")
 options.add_argument(
@@ -80,7 +81,7 @@ for i, house in enumerate(houses):
     form = columns[1].get_text()
     price = columns[2].get_text()
 
-    size = columns[3].get_text() + " m*m"
+    size = columns[3].get_text() + " m²"
 
     floor = columns[4].get_text()
     if floor[0] == "외":

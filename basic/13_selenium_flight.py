@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+
 options = webdriver.ChromeOptions()
 # options.headless = True
 options.add_argument("window-size=1920x1080")

@@ -1,6 +1,7 @@
 import requests
 
-res = requests.get("http://www.google.co.kr")
+
+res = requests.get("http://www.google.co.kr", timeout=5)
 # res = requests.get("http://www.nadocoding.tistory.com")
 res.raise_for_status()
 # print("응답코드 :", res.status_code) # 200 이면 정상
