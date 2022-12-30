@@ -3,7 +3,6 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-
 # f = open("01_basic/items.txt", "w", encoding="utf8")
 item_count = 0
 

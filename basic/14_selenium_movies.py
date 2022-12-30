@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 url = "https://play.google.com/store/movies?hl=ko&gl=US"
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
@@ -16,7 +15,8 @@ with open("movies.html", "w", encoding="utf8") as f:
     f.write(res.text)
 
 movies = soup.find_all(
-    "div", attrs={"class": "VfPpkd-WsjYwc VfPpkd-WsjYwc-OWXEXe-INsAgc KC1dQ Usd1Ac AaN0Dd  QafiQ"}
+    "div",
+    attrs={"class": "VfPpkd-WsjYwc VfPpkd-WsjYwc-OWXEXe-INsAgc KC1dQ Usd1Ac AaN0Dd  QafiQ"},
 )
 print(len(movies))  # 0
 

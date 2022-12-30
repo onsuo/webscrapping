@@ -3,7 +3,6 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-
 filename = "01_basic/시가총액1-200.csv"
 f = open(filename, "w", encoding="utf-8-sig", newline="")
 writer = csv.writer(f)

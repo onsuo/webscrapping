@@ -1,6 +1,5 @@
 import requests
 
-
 res = requests.get("http://www.google.co.kr", timeout=5)
 # res = requests.get("http://www.nadocoding.tistory.com")
 res.raise_for_status()

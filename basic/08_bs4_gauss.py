@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 url = "https://comic.naver.com/webtoon/list?titleId=799793"
 res = requests.get(url, timeout=5)
 res.raise_for_status()

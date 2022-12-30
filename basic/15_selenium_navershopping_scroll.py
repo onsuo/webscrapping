@@ -1,8 +1,7 @@
 import time
 
-from selenium import webdriver
 from bs4 import BeautifulSoup
-
+from selenium import webdriver
 
 options = webdriver.ChromeOptions()
 options.add_argument(

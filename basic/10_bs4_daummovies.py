@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 # f = open("01_basic/movierank.txt", "w", encoding="utf8")
 
 for year in range(2015, 2022):

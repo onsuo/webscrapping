@@ -1,19 +1,21 @@
 {
-    "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
-        // "--disable=W0611", // unused-import
         "--disable=C0103", // invalid-name
         "--disable=C0111", // missing-docstring
-        "--disable=C0301", // line-too-long
-        // "--disable=C0304", // missing-final-newline
-        // "--disable=C0305" // trailing-newlines
     ],
-    "python.analysis.typeCheckingMode": "basic",
-    "python.formatting.provider": "black",
-    "editor.formatOnSave": true, // 저장할 때마다 black을 적용합니다.
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "120"
-    ], // 최대 코드길이를 100으로 설정합니다.
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "black-formatter.args": [
+        "--line-length", "100", 
+    ],
+    "isort.args": [
+        "--profile", "black",
+        "--force-grid-wrap", "3",
+    ],
 }

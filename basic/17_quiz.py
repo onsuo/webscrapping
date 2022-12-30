@@ -39,10 +39,9 @@ Quiz) 부동산 매물(송파 헬리오시티) 정보를 스크래핑하는 프�
     ...
 """
 
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup
-
 
 options = webdriver.ChromeOptions()
 options.add_argument("window-size=1920x1080")

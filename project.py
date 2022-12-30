@@ -48,8 +48,8 @@ Kim : 글쎄요, 저는 어쩌구 저쩌구
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 def create_browser():
@@ -76,7 +76,10 @@ def scrape_weather():
     weather = summary[2]  # 흐림
     temperature_diff = summary[0] + " " + summary[1]  # 어제보다 00° 높아요
 
-    temperature = browser.find_element(By.CLASS_NAME, "temperature_text").text.split("\n")[1].rstrip("°") + "℃"  # 00℃
+    temperature = (
+        browser.find_element(By.CLASS_NAME, "temperature_text").text.split("\n")[1].rstrip("°")
+        + "℃"
+    )  # 00℃
 
     temperature_range = browser.find_element(By.CLASS_NAME, "temperature_inner")
     lowest = temperature_range.find_element(By.CLASS_NAME, "lowest").text.split("\n")[1]  # 00°
@@ -85,14 +88,20 @@ def scrape_weather():
     rain = browser.find_element(By.CLASS_NAME, "cell_weather").text.split("\n")
     rain_poss = (rain[1], rain[4])  # 00%
 
-    browser.find_element(By.CLASS_NAME, "today_chart_list").find_element(By.XPATH, "//*[text()='미세먼지']").click()
+    browser.find_element(By.CLASS_NAME, "today_chart_list").find_element(
+        By.XPATH, "//*[text()='미세먼지']"
+    ).click()
     WebDriverWait(browser, 3).until(
         EC.presence_of_element_located((By.CLASS_NAME, "state_info._fine_dust._info_layer"))
     )
 
-    fine_dust = browser.find_element(By.CLASS_NAME, "state_info._fine_dust._info_layer").text.split("\n")
+    fine_dust = browser.find_element(By.CLASS_NAME, "state_info._fine_dust._info_layer").text.split(
+        "\n"
+    )
     particulate1 = fine_dust[2].split(" ")
-    ultrafine_dust = browser.find_element(By.CLASS_NAME, "state_info._ultrafine_dust._info_layer").text.split("\n")
+    ultrafine_dust = browser.find_element(
+        By.CLASS_NAME, "state_info._ultrafine_dust._info_layer"
+    ).text.split("\n")
     particulate2 = ultrafine_dust[2].split(" ")
 
     print("")
@@ -115,7 +124,7 @@ def scrape_main_news():
     print("[분야별 주요뉴스]")
     for i in range(3):
         print(f"{i + 1}. {main_news[i].text}")  # 1. 무슨 무슨 일이...
-        print(f" (링크 : {main_news[i].get_dom_attribute('href')})")  # (링크 : https://...)
+        print(f" (링크 : {main_news[i].get_attribute('href')})")  # (링크 : https://...)
     print("")
 
 
@@ -129,9 +138,11 @@ def scrape_it_news():
 
     print("[IT 뉴스]")
     for i in range(3):
-        headline = it_news[i].find_element(By.CLASS_NAME, "cluster_text").find_element(By.TAG_NAME, "a")
+        headline = (
+            it_news[i].find_element(By.CLASS_NAME, "cluster_text").find_element(By.TAG_NAME, "a")
+        )
         print(f"{i + 1}. {headline.text}")  # 1. 무슨 무슨 일이...
-        print(f" (링크 : {headline.get_dom_attribute('href')})")  # (링크 : https://...)
+        print(f" (링크 : {headline.get_attribute('href')})")  # (링크 : https://...)
     print("")
 
 
@@ -139,8 +150,12 @@ def scrape_english():
     url = "https://www.hackers.co.kr/?c=s_eng/eng_contents/I_others_english&keywd=haceng_submain_lnb_eng_I_others_english&logger_kw=haceng_submain_lnb_eng_I_others_english#;"
     browser.get(url)
 
-    english_convs = browser.find_elements(By.CLASS_NAME, "conv_txtBox")[1].find_elements(By.CLASS_NAME, "conv_sub")
-    korean_convs = browser.find_elements(By.CLASS_NAME, "conv_txtBox")[0].find_elements(By.CLASS_NAME, "conv_sub")
+    english_convs = browser.find_elements(By.CLASS_NAME, "conv_txtBox")[1].find_elements(
+        By.CLASS_NAME, "conv_sub"
+    )
+    korean_convs = browser.find_elements(By.CLASS_NAME, "conv_txtBox")[0].find_elements(
+        By.CLASS_NAME, "conv_sub"
+    )
 
     print("[오늘의 영어 회화]")
     print("(영어 지문)")
