@@ -36,6 +36,8 @@ browser.find_element(By.XPATH, "//button[text()='가는 날']").click()
 
 # 다음달 27일, 다다음달 28일 선택
 # stale element reference: element is not attached to the page document -> 너무 빠르게 명령어를 실행함
+# implicit wait : 웹페이지를 모두 받아올 때까지 자동으로 기다림 (원하는 부분이 동적 스크립트에 해당되는 경우 제대로 받아오지 못할 수 있음)
+# explicit wait : 특정 조건이 완료될 때까지 기다림 (동적 스크립트 부분의 로딩도 다룰 수 있음)
 WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.XPATH, "//b[text()='27']")))
 browser.find_elements(By.XPATH, "//b[text()='27']")[1].click()
 time.sleep(1)

@@ -1,4 +1,4 @@
-# webscrapping
+# Webscrapping
 
 ### Python 을 이용한 웹 스크래핑
 
@@ -7,7 +7,7 @@
 
 ### 사용된 package 목록
 
-- requests
-- selenium
-- beautifulsoup4
-- lxml
+- requests : 빠른 html 문서 불러오기
+- beautifulsoup4 : html 문서 스크래핑
+- lxml : html parser
+- selenium : 웹페이지 실시간 탐색 및 스크래핑
