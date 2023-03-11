@@ -7,7 +7,7 @@
 
 ### 사용된 package 목록
 
-- requests : 빠른 html 문서 불러오기
-- beautifulsoup4 : html 문서 스크래핑
-- lxml : html parser
-- selenium : 웹페이지 실시간 탐색 및 스크래핑
+- requests (v2.28.1) : 빠른 html 문서 불러오기
+- beautifulsoup4 (v4.11.1) : html 문서 스크래핑
+- lxml (v4.9.1) : html parser
+- selenium (v4.7.2) : 웹페이지 실시간 탐색 및 스크래핑

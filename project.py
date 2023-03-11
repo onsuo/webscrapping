@@ -124,7 +124,7 @@ def scrape_main_news():
     print("[분야별 주요뉴스]")
     for i in range(3):
         print(f"{i + 1}. {main_news[i].text}")  # 1. 무슨 무슨 일이...
-        print(f" (링크 : {main_news[i].get_attribute('href')})")  # (링크 : https://...)
+        print(f" (링크 : {main_news[i].get_dom_attribute('href')})")  # (링크 : https://...)
     print("")
 
 
@@ -142,7 +142,7 @@ def scrape_it_news():
             it_news[i].find_element(By.CLASS_NAME, "cluster_text").find_element(By.TAG_NAME, "a")
         )
         print(f"{i + 1}. {headline.text}")  # 1. 무슨 무슨 일이...
-        print(f" (링크 : {headline.get_attribute('href')})")  # (링크 : https://...)
+        print(f" (링크 : {headline.get_dom_attribute('href')})")  # (링크 : https://...)
     print("")
 
 

@@ -16,6 +16,6 @@
     ],
     "isort.args": [
         "--profile", "black",
-        "--force-grid-wrap", "3",
+        "--force-grid-wrap", "2",
     ],
 }
